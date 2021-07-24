@@ -6,6 +6,7 @@ version: 0
 executable lehavre
   build-depends:
     base,
+    text,
   default-extensions:
     BlockArguments
     DerivingStrategies
@@ -17,3 +18,5 @@ executable lehavre
   ghc-options: -Wall
   main-is: Main.hs
   other-modules:
+    Game
+    Player
