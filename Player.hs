@@ -1,5 +1,6 @@
 module Player where
 
+import Building
 import Numeric.Natural
 
 data Player = Player
@@ -11,7 +12,8 @@ data Player = Player
     playerGrain :: Natural,
     playerCattle :: Natural,
     playerCoal :: Natural,
-    playerHides :: Natural
+    playerHides :: Natural,
+    playerBuildings :: [Building]
   }
 
 inititialPlayer :: Player
@@ -25,5 +27,6 @@ inititialPlayer =
       playerGrain = 0,
       playerCattle = 0,
       playerCoal = 1,
-      playerHides = 0
+      playerHides = 0,
+      playerBuildings = []
     }

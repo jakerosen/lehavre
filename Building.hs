@@ -3,11 +3,19 @@ module Building where
 import Data.Text (Text)
 import Numeric.Natural
 
+-- TODO
+data BuildingPassive = BuildingPassive
+
+data BuildingAction = BuildingAction
+
+data BuildingFinalValue = BuildingFinalValue'Value
+
 data Building = Building
   { buildingName :: Text,
     buildingID :: Text,
     buildingCost :: Natural,
     buildingValue :: Natural,
+    buildingFinalValue :: BuildingFinalValue,
     buildingModernized :: Bool,
     buildingWoodCost :: Natural,
     buildingClayCost :: Natural,
@@ -15,9 +23,9 @@ data Building = Building
     buildingSteelCost :: Natural,
     buildingBuildable :: Bool,
     buildingEntryCostFrancs :: Natural,
-    buildingEntryCostFood :: Natural
-    -- building passive effect
-    -- building action
+    buildingEntryCostFood :: Natural,
+    buildingPassiveEffect :: Maybe BuildingPassive,
+    buildingAction :: Maybe BuildingAction
   }
 
 buildingFirm1 :: Building
@@ -27,6 +35,7 @@ buildingFirm1 =
       buildingID = "B1",
       buildingCost = 4,
       buildingValue = 4,
+      buildingFinalValue = BuildingFinalValue'Value,
       buildingModernized = False,
       buildingWoodCost = 0,
       buildingClayCost = 0,
@@ -34,7 +43,9 @@ buildingFirm1 =
       buildingSteelCost = 0,
       buildingBuildable = False,
       buildingEntryCostFrancs = 0,
-      buildingEntryCostFood = 0
+      buildingEntryCostFood = 0,
+      buildingPassiveEffect = Nothing,
+      buildingAction = Nothing
     }
 
 buildingFirm2 :: Building
@@ -44,6 +55,7 @@ buildingFirm2 =
       buildingID = "B2",
       buildingCost = 6,
       buildingValue = 6,
+      buildingFinalValue = BuildingFinalValue'Value,
       buildingModernized = False,
       buildingWoodCost = 0,
       buildingClayCost = 0,
@@ -51,7 +63,9 @@ buildingFirm2 =
       buildingSteelCost = 0,
       buildingBuildable = False,
       buildingEntryCostFrancs = 0,
-      buildingEntryCostFood = 1
+      buildingEntryCostFood = 1,
+      buildingPassiveEffect = Nothing,
+      buildingAction = Nothing
     }
 
 constructionFirm :: Building
@@ -61,6 +75,7 @@ constructionFirm =
       buildingID = "B3",
       buildingCost = 8,
       buildingValue = 8,
+      buildingFinalValue = BuildingFinalValue'Value,
       buildingModernized = False,
       buildingWoodCost = 0,
       buildingClayCost = 0,
@@ -68,7 +83,9 @@ constructionFirm =
       buildingSteelCost = 0,
       buildingBuildable = False,
       buildingEntryCostFrancs = 0,
-      buildingEntryCostFood = 2
+      buildingEntryCostFood = 2,
+      buildingPassiveEffect = Nothing,
+      buildingAction = Nothing
     }
 
 marketplace :: Building
@@ -78,6 +95,7 @@ marketplace =
       buildingID = "01",
       buildingCost = 6,
       buildingValue = 6,
+      buildingFinalValue = BuildingFinalValue'Value,
       buildingModernized = False,
       buildingWoodCost = 2,
       buildingClayCost = 0,
@@ -85,7 +103,9 @@ marketplace =
       buildingSteelCost = 0,
       buildingBuildable = True,
       buildingEntryCostFrancs = 1,
-      buildingEntryCostFood = 2
+      buildingEntryCostFood = 2,
+      buildingPassiveEffect = Nothing,
+      buildingAction = Nothing
     }
 
 sawmill :: Building
@@ -95,6 +115,7 @@ sawmill =
       buildingID = "02",
       buildingCost = 14,
       buildingValue = 14,
+      buildingFinalValue = BuildingFinalValue'Value,
       buildingModernized = False,
       buildingWoodCost = 0,
       buildingClayCost = 1,
@@ -102,7 +123,9 @@ sawmill =
       buildingSteelCost = 0,
       buildingBuildable = True,
       buildingEntryCostFrancs = 0,
-      buildingEntryCostFood = 0
+      buildingEntryCostFood = 0,
+      buildingPassiveEffect = Nothing,
+      buildingAction = Nothing
     }
 
 fishery :: Building
@@ -112,6 +135,7 @@ fishery =
       buildingID = "03",
       buildingCost = 10,
       buildingValue = 10,
+      buildingFinalValue = BuildingFinalValue'Value,
       buildingModernized = False,
       buildingWoodCost = 1,
       buildingClayCost = 1,
@@ -119,5 +143,7 @@ fishery =
       buildingSteelCost = 0,
       buildingBuildable = True,
       buildingEntryCostFrancs = 0,
-      buildingEntryCostFood = 0
+      buildingEntryCostFood = 0,
+      buildingPassiveEffect = Nothing,
+      buildingAction = Nothing
     }
