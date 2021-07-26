@@ -2,7 +2,7 @@ module Game where
 
 import Building
 import Control.Monad.Except
-import Control.Monad.State.Strict (StateT)
+import Control.Monad.State.Strict
 import Control.Monad.Writer.Strict
 import Data.Functor.Identity
 import Numeric.Natural
@@ -98,7 +98,43 @@ data GameState
 --   StateT Game (ExceptT String (WriterT [String] Identity)) ()
 
 -- Except State Writer
-stepGame ::
-  GameEvent ->
-  ExceptT String (StateT Game (WriterT [String] Identity)) ()
-stepGame = undefined
+-- stepGame ::
+--   GameEvent ->
+--   ExceptT String (StateT Game (WriterT [String] Identity)) ()
+-- stepGame = undefined
+
+-- foo :: WriterT [String] (StateT Game (ExceptT String Identity)) ()
+-- foo = undefined
+
+-- bar :: Game -> Either String (((), [String]), Game)
+-- bar = runIdentity . runExceptT <$> runStateT (runWriterT foo)
+
+-- foo :: StateT Game (WriterT [String] (ExceptT String Identity)) ()
+-- foo = undefined
+
+-- bar :: Game -> Either String (((), Game), [String])
+-- bar = runIdentity . runExceptT . runWriterT <$> runStateT foo
+
+-- foo :: WriterT [String] (ExceptT String (StateT Game Identity)) ()
+-- foo = undefined
+
+-- bar :: Game -> (Either String ((), [String]), Game)
+-- bar = runIdentity <$> runStateT (runExceptT (runWriterT foo))
+
+-- foo :: ExceptT String (WriterT [String] (StateT Game Identity)) ()
+-- foo = undefined
+
+-- bar :: Game -> ((Either String (), [String]), Game)
+-- bar = runIdentity <$> runStateT (runWriterT (runExceptT foo))
+
+-- foo :: StateT Game (ExceptT String (WriterT [String] Identity)) ()
+-- foo = undefined
+
+-- bar :: Game -> (Either String ((), Game), [String])
+-- bar = runIdentity . runWriterT . runExceptT <$> runStateT foo
+
+foo :: ExceptT String (StateT Game (WriterT [String] Identity)) ()
+foo = undefined
+
+bar :: Game -> ((Either String (), Game), [String])
+bar = runIdentity . runWriterT <$> runStateT (runExceptT foo)
